@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get the App</title>
+  <style>
+    :root {
+      --bg-color: #111324;
+      --accent-color: #d1d737;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--accent-color);
+      font-family: system-ui, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 2rem;
+      color: #e3e3e3;
+    }
+
+    .qr-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .qr-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .qr-box img {
+      width: 160px;
+      height: 160px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(209, 215, 55, 0.3);
+      background: white;
+      padding: 10px;
+    }
+
+    .qr-box span {
+      margin-top: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: var(--accent-color);
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      .qr-box img {
+        width: 120px;
+        height: 120px;
+      }
+    }
+  </style>
+
+  <script>
+    const iosLink = "https://apps.apple.com/app/https://apps.apple.com/app/id6741703505"; // 🔁 заменить
+    const androidLink = "https://play.google.com/store/apps/details?id=com.augify.app"; // 🔁 заменить
+
+    window.onload = function () {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      if (/android/i.test(userAgent)) {
+        window.location.href = androidLink;
+      } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        window.location.href = iosLink;
+      }
+    };
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Install our App</h1>
+    <p>Scan the QR code to download on your mobile device</p>
+
+    <div class="qr-container">
+      <div class="qr-box">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://apps.apple.com/app/https://apps.apple.com/app/id6741703505" alt="App Store QR">
+        <span>App Store</span>
+      </div>
+      <div class="qr-box">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://play.google.com/store/apps/details?id=https://play.google.com/store/apps/details?id=com.augify.app" alt="Google Play QR">
+        <span>Google Play</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
